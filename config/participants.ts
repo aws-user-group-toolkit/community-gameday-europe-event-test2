@@ -153,6 +153,8 @@ export const AWS_SUPPORTERS: Organizer[] = [
   { name: "Mihaly",  jobTitle: "Solutions Architect, AWS",      flag: "🇭🇺", face: "assets/faces/mihaly.jpg",  type: "aws" },
 ];
 
+export const EVENT_REGION = "Asia Pacific";
+
 // ── Display Stats Config ────────────────────────────────────────────────────
 export type StatType = "user-groups" | "countries" | "timezones" | "edition" | "gameplay-hours";
 export type StatConfig = StatType | { type: StatType; sub: string };

@@ -87,13 +87,9 @@ export function getOrganizerUserGroup(p: Organizer): UserGroupName | undefined {
 // Iteration 1 — Scenario B: Jerome as host, Anda as sole co-organizer, 10 UGs
 export const ORGANIZERS: Organizer[] = [
   {
-    name: "Jerome", fullName: "Jerome Hayen", streamRole: "host",
-    programs: [
-      { program: "ug-leader", userGroup: "AWS User Group Belgium" },
-      { program: "aws-community-builder" },
-    ],
+    name: "Jerome", streamRole: "host",
+    programs: [{ program: "ug-leader", userGroup: "AWS User Group Belgium" }],
     location: "Brussels, Belgium", flag: "🇧🇪", face: "assets/faces/jerome.jpg", type: "community",
-    title: "AWS Community Builder",
     subtitle: "AWS User Group Belgium",
     bio: [
       "Your host for today's GameDay Europe stream",

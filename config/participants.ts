@@ -1,11 +1,11 @@
 /**
- * Participants Configuration  -  AWS Community GameDay Europe
+ * Participants Configuration
  *
- * TEST SCENARIO B — Minimal config:
+ * TEST SCENARIO — Asia Pacific:
  *   - Jerome as host
- *   - Anda as sole co-organizer
- *   - Arnaud as sole gamemaster
- *   - 10 user groups
+ *   - 5 co-organizers + Anda as support-presenter (6 total in closing grid)
+ *   - 5 AWS supporters (tests 5-person grid)
+ *   - 12 Asia-Pacific UGs across Japan, Singapore, Korea, India, Australia, etc.
  */
 
 // ── User Group Interface ──
@@ -16,18 +16,20 @@ export interface UserGroup {
   logo?: string;
 }
 
-// ── 10 Participating User Groups (minimal test) ──
+// ── 12 Participating User Groups — Asia Pacific ──
 export const USER_GROUPS = [
-  { flag: "🇧🇪", name: "AWS User Group Belgium",    location: "Brussels, Belgium",     logo: "https://secure.meetupstatic.com/photos/event/7/d/7/b/clean_523472123.webp" },
-  { flag: "🇨🇭", name: "AWS Swiss UG - Geneva",     location: "Geneva, Switzerland",   logo: "https://secure.meetupstatic.com/photos/event/6/f/2/1/clean_512908449.webp" },
-  { flag: "🇦🇹", name: "AWS User Group Vienna",     location: "Vienna, Austria",       logo: "https://secure.meetupstatic.com/photos/event/9/8/d/5/highres_523779125.jpeg" },
-  { flag: "🇩🇪", name: "AWS UG Münsterland",        location: "Münster, Germany",      logo: "https://secure.meetupstatic.com/photos/event/3/b/c/2/clean_530115298.webp" },
-  { flag: "🇩🇪", name: "Frankfurt AWS User Group",  location: "Frankfurt, Germany",    logo: "https://secure.meetupstatic.com/photos/event/b/4/5/f/clean_495406175.webp" },
-  { flag: "🇩🇪", name: "AWS User Group Bonn",       location: "Bonn, Germany",         logo: "https://secure.meetupstatic.com/photos/event/3/f/5/2/clean_513136210.webp" },
-  { flag: "🇷🇴", name: "AWS UG Timisoara",          location: "Timisoara, Romania",    logo: "https://secure.meetupstatic.com/photos/event/8/9/a/8/clean_513815240.webp" },
-  { flag: "🇭🇺", name: "AWS User Group Budapest",   location: "Budapest, Hungary",     logo: "https://secure.meetupstatic.com/photos/event/7/3/e/5/clean_524189669.webp" },
-  { flag: "🇫🇷", name: "AWS UG France - Paris",     location: "Paris, France",         logo: "https://secure.meetupstatic.com/photos/event/c/5/1/5/clean_497630453.webp" },
-  { flag: "🇵🇱", name: "AWS UG Warsaw",             location: "Warsaw, Poland",        logo: "https://secure.meetupstatic.com/photos/event/6/1/e/5/clean_516145061.webp" },
+  { flag: "🇯🇵", name: "AWS User Group Tokyo",         location: "Tokyo, Japan" },
+  { flag: "🇯🇵", name: "AWS User Group Osaka",         location: "Osaka, Japan" },
+  { flag: "🇸🇬", name: "AWS User Group Singapore",     location: "Singapore" },
+  { flag: "🇰🇷", name: "AWS User Group Seoul",         location: "Seoul, South Korea" },
+  { flag: "🇮🇳", name: "AWS User Group Mumbai",        location: "Mumbai, India" },
+  { flag: "🇮🇳", name: "AWS User Group Bangalore",     location: "Bangalore, India" },
+  { flag: "🇦🇺", name: "AWS User Group Sydney",        location: "Sydney, Australia" },
+  { flag: "🇦🇺", name: "AWS User Group Melbourne",     location: "Melbourne, Australia" },
+  { flag: "🇮🇩", name: "AWS User Group Jakarta",       location: "Jakarta, Indonesia" },
+  { flag: "🇲🇾", name: "AWS User Group Kuala Lumpur",  location: "Kuala Lumpur, Malaysia" },
+  { flag: "🇹🇭", name: "AWS User Group Bangkok",       location: "Bangkok, Thailand" },
+  { flag: "🇵🇭", name: "AWS User Group Manila",        location: "Manila, Philippines" },
 ] as const satisfies UserGroup[];
 
 export type UserGroupName = typeof USER_GROUPS[number]["name"];
@@ -84,38 +86,79 @@ export function getOrganizerUserGroup(p: Organizer): UserGroupName | undefined {
 }
 
 // ── Community Organizers ──
-// Iteration 1 — Scenario B: Jerome as host, Anda as sole co-organizer, 10 UGs
+// Asia scenario: 6 in closing grid (5 co-organizers + 1 support-presenter)
 export const ORGANIZERS: Organizer[] = [
   {
     name: "Jerome", streamRole: "host",
-    programs: [{ program: "ug-leader", userGroup: "AWS User Group Belgium" }],
-    location: "Brussels, Belgium", flag: "🇧🇪", face: "assets/faces/jerome.jpg", type: "community",
-    subtitle: "AWS User Group Belgium",
+    programs: [{ program: "ug-leader", userGroup: "AWS User Group Singapore" }],
+    location: "Singapore", flag: "🇸🇬", face: "assets/faces/jerome.jpg", type: "community",
+    title: "AWS Community Builder",
+    subtitle: "AWS User Group Singapore",
     bio: [
-      "Your host for today's GameDay Europe stream",
-      "AWS User Group Leader — AWS User Group Belgium",
-      "Co-founder of AWS Community GameDay Europe",
+      "Your host for today's GameDay APAC stream",
+      "AWS User Group Leader — Singapore",
     ],
   },
   {
-    name: "Anda", streamRole: "co-organizer",
+    name: "Marcel", streamRole: "co-organizer",
+    programs: [{ program: "ug-leader", userGroup: "AWS User Group Tokyo" }],
+    location: "Tokyo, Japan", flag: "🇯🇵", face: "assets/faces/marcel.jpg", type: "community",
+    bio: ["AWS User Group Leader — Tokyo."],
+  },
+  {
+    name: "Linda", fullName: "Linda Mohamed", streamRole: "co-organizer",
     programs: [
-      { program: "ug-leader", userGroup: "AWS Swiss UG - Geneva" },
+      { program: "ug-leader", userGroup: "AWS User Group Sydney" },
+      { program: "aws-hero" },
+    ],
+    location: "Sydney, Australia", flag: "🇦🇺", face: "assets/faces/linda.jpg", type: "community",
+    bio: ["AWS Community Hero & UG Leader — Sydney."],
+  },
+  {
+    name: "Manuel", streamRole: "co-organizer",
+    programs: [{ program: "ug-leader", userGroup: "AWS User Group Seoul" }],
+    location: "Seoul, South Korea", flag: "🇰🇷", face: "assets/faces/manuel.jpg", type: "community",
+    bio: ["AWS User Group Leader — Seoul."],
+  },
+  {
+    name: "Andreas", streamRole: "co-organizer",
+    programs: [{ program: "ug-leader", userGroup: "AWS User Group Mumbai" }],
+    location: "Mumbai, India", flag: "🇮🇳", face: "assets/faces/andreas.jpg", type: "community",
+    bio: ["AWS User Group Leader — Mumbai."],
+  },
+  {
+    name: "Lucian", streamRole: "co-organizer",
+    programs: [{ program: "ug-leader", userGroup: "AWS User Group Bangkok" }],
+    location: "Bangkok, Thailand", flag: "🇹🇭", face: "assets/faces/lucian.jpg", type: "community",
+    bio: ["AWS User Group Leader — Bangkok."],
+  },
+  {
+    name: "Anda", streamRole: "support-presenter",
+    programs: [
+      { program: "ug-leader", userGroup: "AWS User Group Kuala Lumpur" },
       { program: "aws-community-builder" },
     ],
-    location: "Geneva, Switzerland", flag: "🇨🇭", face: "assets/faces/anda.jpg", type: "community",
-    bio: ["AWS User Group Leader and initiator of this GameDay."],
+    location: "Kuala Lumpur, Malaysia", flag: "🇲🇾", face: "assets/faces/anda.jpg", type: "community",
   },
 ];
 
-// ── AWS Supporters (Gamemasters & Community Team) ──
+// ── AWS Supporters — 5 people (tests 5-person grid / 3-col with incomplete last row) ──
 export const AWS_SUPPORTERS: Organizer[] = [
-  { name: "Arnaud", streamRole: "gamemaster", jobTitle: "Sr. Developer Advocate, AWS", flag: "🇫🇷", face: "assets/faces/arnaud.jpg", type: "aws",
+  { name: "Arnaud", streamRole: "gamemaster", jobTitle: "Sr. Developer Advocate, AWS",        flag: "🇫🇷", face: "assets/faces/arnaud.jpg", type: "aws",
     bio: ["Sr. Developer Advocate at AWS. Delivers the official GameDay instructions."] },
+  { name: "Loïc",   streamRole: "gamemaster", jobTitle: "Sr. Technical Account Manager, AWS", flag: "🇫🇷", face: "assets/faces/loic.jpg",   type: "aws",
+    bio: ["Sr. Technical Account Manager at AWS. Co-delivers GameDay instructions."] },
+  { name: "Uliana",  jobTitle: "Community Manager, AWS",        flag: "🌍", face: "assets/faces/uliana.jpg",  type: "aws" },
+  { name: "Natalia", jobTitle: "DevEx Community Manager, AWS",  flag: "🌍", face: "assets/faces/natalia.jpg", type: "aws" },
+  { name: "Mihaly",  jobTitle: "Solutions Architect, AWS",      flag: "🇭🇺", face: "assets/faces/mihaly.jpg",  type: "aws" },
 ];
 
 // ── Display Stats Config ────────────────────────────────────────────────────
-// Pick which 1–5 stats appear in the "By the Numbers" sections.
-// Options: "user-groups" | "countries" | "timezones" | "edition" | "gameplay-hours"
 export type StatType = "user-groups" | "countries" | "timezones" | "edition" | "gameplay-hours";
-export const DISPLAY_STATS: StatType[] = ["user-groups", "countries", "timezones", "edition"];
+export type StatConfig = StatType | { type: StatType; sub: string };
+export const DISPLAY_STATS: StatConfig[] = [
+  "user-groups",
+  "countries",
+  "gameplay-hours",
+  "edition",
+];

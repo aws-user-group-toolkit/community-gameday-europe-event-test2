@@ -113,3 +113,9 @@ export const AWS_SUPPORTERS: Organizer[] = [
   { name: "Arnaud", streamRole: "gamemaster", jobTitle: "Sr. Developer Advocate, AWS", flag: "🇫🇷", face: "assets/faces/arnaud.jpg", type: "aws",
     bio: ["Sr. Developer Advocate at AWS. Delivers the official GameDay instructions."] },
 ];
+
+// ── Display Stats Config ────────────────────────────────────────────────────
+// Pick which 1–5 stats appear in the "By the Numbers" sections.
+// Options: "user-groups" | "countries" | "timezones" | "edition" | "gameplay-hours"
+export type StatType = "user-groups" | "countries" | "timezones" | "edition" | "gameplay-hours";
+export const DISPLAY_STATS: StatType[] = ["user-groups", "countries", "timezones", "edition"];
